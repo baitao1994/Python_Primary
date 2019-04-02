@@ -1,0 +1,3 @@
+tkinter 库要求创建的每一个控件如：Text（frmLT）都要有父容器，但还未打包放入父容器，因此需要用到函数pack（）或grid（）
+将控件打包，pack（）和grid（）别同时使用
+graphics库在添加控件时不需要指定父容器，直接打包：Text（Point（x,y）,"我的妈呀"）.draw（win）
