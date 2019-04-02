@@ -1,0 +1,49 @@
+在使用Tkinter模块编写图像界面时，经常用到pack()和grid()进行布局管理，pack()参数较少，使用方便，是最简单的布局，
+但是当控件数量较多时，可能需要使用grid()进行布局（不要在同一个窗口中同时使用grid()和pack()！！）。
+
+*********************************
+grid使用方法和主要参数：
+
+　　1.row=x,column=y：将控件放在x行，y列的位置。注意：
+如果不指定参数，则默认从0开始。
+此处的行号和列号并不是像在坐标轴上一样严格，只是代表一个上下左右的关系，如：
+　　Label(master, text="First").grid(row=0)
+　　Label(master, text="Second").grid(row=1)
+
+和（在行号“1”没有出现的情况下）：
+
+　　Label(master, text="First").grid(row=0)
+　　Label(master, text="Second").grid(row=2)
+
+效果都是一样的：
+          
+　　2.columnspan： 设置单元格横向跨越的列数，即控件占据的列数（宽度）； 
+    rowspan：设置单元格纵向跨越的行数，即控件占据的行数（高度）。
+
+　　3.ipadx：设置控件里面水平方向空白区域大小； ipady：设置控件里面垂直方向空白区域大小；
+
+　　　padx：设置控件周围水平方向空白区域保留大小； pady：设置控件周围垂直方向空白区域保留大小；
+
+　　4.sticky:默认的控件在窗口中的对齐方式是居中。可以使用sticky选项去指定对齐方式，
+    可以选择的值有：N/S/E/W，分别代表上对齐/下对齐/左对齐/右对齐，可以单独使用N/S/E/W，也可以上下和左右组合使用，达到不同的对齐效果：
+    
+    ************************
+    from tkinter import *
+
+    master = Tk()
+    master.geometry('300x130')
+    e1 = Button(master,text='First',height=2,width=7,fg='red')
+    e2 = Button(master,text='Second',height=3,width=13,fg='blue')
+    e1.grid(row=0, column=0,sticky=N+S)
+    e2.grid(row=0, column=1,sticky=N+S)
+
+    mainloop()
+    ************************
+    
+    sticky=N/S/E//W:顶端对齐/底端对齐/右对齐/左对齐
+
+　　sticky=N+S：拉伸高度，使其在水平方向上顶端和底端都对齐
+
+　　sticky=E+W，拉伸宽度，使其在垂直方向上左边界和右边界都对齐
+
+　　sticky=N+S+E:拉伸高度，使其在水平方向上对齐，并将控件放在右边
