@@ -19,7 +19,7 @@ from turtle import *
 
 def drawTriangle(t,len,s):
     for i in range(t):# for 循环语句
-        seth(s)
+        seth(s)#角度转到s，而不是转了s
         fd(len)
         s += 120
 def main():
